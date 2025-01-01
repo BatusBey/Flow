@@ -1,0 +1,70 @@
+-- StarterGui'ye eklenen ScreenGui için Script
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer -- Kullanıcıyı otomatik algılar
+
+-- GUI oluşturma
+local gui = Instance.new("ScreenGui")
+gui.Name = "ArbixHubGUI"
+gui.Parent = localPlayer:WaitForChild("PlayerGui")
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 300, 0, 200)
+frame.Position = UDim2.new(0.5, -150, 0.5, -100)
+frame.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+frame.Active = true -- Drag yapılabilirlik için gerekli
+frame.Draggable = true -- Drag yapılabilir
+frame.Parent = gui
+
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Size = UDim2.new(1, 0, 0.3, 0)
+titleLabel.Position = UDim2.new(0, 0, 0, 0)
+titleLabel.Text = "Arbix Hub"
+titleLabel.TextColor3 = Color3.new(1, 1, 1)
+titleLabel.BackgroundTransparency = 1
+titleLabel.Font = Enum.Font.SourceSansBold
+titleLabel.TextScaled = true
+titleLabel.Parent = frame
+
+local madeByLabel = Instance.new("TextLabel")
+madeByLabel.Size = UDim2.new(1, 0, 0.2, 0)
+madeByLabel.Position = UDim2.new(0, 0, 0.3, 0)
+madeByLabel.Text = "Made By Xbatuhan2"
+madeByLabel.TextColor3 = Color3.new(1, 1, 1)
+madeByLabel.BackgroundTransparency = 1
+madeByLabel.Font = Enum.Font.SourceSans
+madeByLabel.TextScaled = true
+madeByLabel.Parent = frame
+
+local startButton = Instance.new("TextButton")
+startButton.Size = UDim2.new(0.8, 0, 0.3, 0)
+startButton.Position = UDim2.new(0.1, 0, 0.6, 0)
+startButton.Text = "Start"
+startButton.TextColor3 = Color3.new(1, 1, 1)
+startButton.BackgroundColor3 = Color3.new(0.1, 0.5, 0.1)
+startButton.Font = Enum.Font.SourceSansBold
+startButton.TextScaled = true
+startButton.Parent = frame
+
+-- Start butonuna tıklama fonksiyonu
+startButton.MouseButton1Click:Connect(function()
+    local selectedPlayer = localPlayer -- Otomatik olarak LocalPlayer seçilir
+
+    if selectedPlayer then
+        local playerStats = selectedPlayer:FindFirstChild("PlayerStats")
+        
+        if playerStats then
+            local flowValue = playerStats:FindFirstChild("Flow")
+            
+            if flowValue and flowValue:IsA("StringValue") then
+                flowValue.Value = "Prodigy"
+                print(selectedPlayer.Name .. " oyuncusunun Flow değeri 'Prodigy' olarak ayarlandı.")
+            else
+                warn("Flow değeri bulunamadı veya doğru türde değil.")
+            end
+        else
+            warn("PlayerStats kısmı bulunamadı.")
+        end
+    else
+        warn("Oyuncu bulunamadı.")
+    end
+end)
