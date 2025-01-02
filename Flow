@@ -1,113 +1,144 @@
--- StarterGui'ye eklenen ScreenGui için Script
-local Players = game:GetService("Players")
-local localPlayer = Players.LocalPlayer -- Kullanıcıyı otomatik algılar
-
--- GUI oluşturma
-local gui = Instance.new("ScreenGui")
-gui.Name = "ArbixHubGUI"
-gui.Parent = localPlayer:WaitForChild("PlayerGui")
-
--- Frame (Flow Değeri)
-local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 300, 0, 250)
-frame.Position = UDim2.new(0.5, -150, 0.5, -125)
-frame.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
-frame.Active = true -- Drag yapılabilirlik için gerekli
-frame.Draggable = true -- Drag yapılabilir
-frame.Parent = gui
-
--- Başlık
-local titleLabel = Instance.new("TextLabel")
-titleLabel.Size = UDim2.new(1, 0, 0.3, 0)
-titleLabel.Position = UDim2.new(0, 0, 0, 0)
-titleLabel.Text = "Arbix Hub"
-titleLabel.TextColor3 = Color3.new(1, 1, 1)
-titleLabel.BackgroundTransparency = 1
-titleLabel.Font = Enum.Font.SourceSansBold
-titleLabel.TextScaled = true
-titleLabel.Parent = frame
-
--- "Made By" etiketi
-local madeByLabel = Instance.new("TextLabel")
-madeByLabel.Size = UDim2.new(1, 0, 0.2, 0)
-madeByLabel.Position = UDim2.new(0, 0, 0.3, 0)
-madeByLabel.Text = "Made By Xbatuhan2"
-madeByLabel.TextColor3 = Color3.new(1, 1, 1)
-madeByLabel.BackgroundTransparency = 1
-madeByLabel.Font = Enum.Font.SourceSans
-madeByLabel.TextScaled = true
-madeByLabel.Parent = frame
-
--- Kullanıcı Flow değerini girecek TextBox
-local flowInputLabel = Instance.new("TextLabel")
-flowInputLabel.Size = UDim2.new(1, 0, 0.1, 0)
-flowInputLabel.Position = UDim2.new(0, 0, 0.5, 0)
-flowInputLabel.Text = "Enter Flow Value:"
-flowInputLabel.TextColor3 = Color3.new(1, 1, 1)
-flowInputLabel.BackgroundTransparency = 1
-flowInputLabel.Font = Enum.Font.SourceSans
-flowInputLabel.TextScaled = true
-flowInputLabel.Parent = frame
-
+-- GUI Oluşturma
+local screenGui = Instance.new("ScreenGui")
+local mainFrame = Instance.new("Frame")
+local uiCornerMain = Instance.new("UICorner")
+local title = Instance.new("TextLabel")
+local subTitle = Instance.new("TextLabel")
+local inflowButton = Instance.new("TextButton")
+local uiCornerButton1 = Instance.new("UICorner")
 local flowInput = Instance.new("TextBox")
-flowInput.Size = UDim2.new(0.8, 0, 0.1, 0)
-flowInput.Position = UDim2.new(0.1, 0, 0.6, 0)
-flowInput.Text = ""
-flowInput.PlaceholderText = "Flow value..."
-flowInput.TextColor3 = Color3.new(0, 0, 0)
-flowInput.BackgroundColor3 = Color3.new(1, 1, 1)
-flowInput.Font = Enum.Font.SourceSans
-flowInput.TextScaled = true
-flowInput.Parent = frame
-
--- Start butonu
+local uiCornerInput = Instance.new("UICorner")
 local startButton = Instance.new("TextButton")
-startButton.Size = UDim2.new(0.8, 0, 0.2, 0)
-startButton.Position = UDim2.new(0.1, 0, 0.8, 0)
-startButton.Text = "Start"
-startButton.TextColor3 = Color3.new(1, 1, 1)
-startButton.BackgroundColor3 = Color3.new(0.1, 0.5, 0.1)
-startButton.Font = Enum.Font.SourceSansBold
-startButton.TextScaled = true
-startButton.Parent = frame
-
--- Close butonu
+local uiCornerButton2 = Instance.new("UICorner")
 local closeButton = Instance.new("TextButton")
-closeButton.Size = UDim2.new(0.8, 0, 0.2, 0)
-closeButton.Position = UDim2.new(0.1, 0, 1, 0)
+local uiCornerButton3 = Instance.new("UICorner")
+
+-- Parent Ayarları
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+mainFrame.Parent = screenGui
+title.Parent = mainFrame
+subTitle.Parent = mainFrame
+inflowButton.Parent = mainFrame
+flowInput.Parent = mainFrame
+startButton.Parent = mainFrame
+closeButton.Parent = mainFrame
+
+-- Köşe Yuvarlama Eklentileri
+uiCornerMain.Parent = mainFrame
+uiCornerButton1.Parent = inflowButton
+uiCornerInput.Parent = flowInput
+uiCornerButton2.Parent = startButton
+uiCornerButton3.Parent = closeButton
+
+-- MainFrame Özellikleri
+mainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+mainFrame.Size = UDim2.new(0, 400, 0, 350)
+mainFrame.Position = UDim2.new(0.5, -200, 0.5, -175)
+mainFrame.Draggable = true
+mainFrame.Active = true
+mainFrame.Selectable = true
+
+uiCornerMain.CornerRadius = UDim.new(0, 15)
+
+-- Title Özellikleri
+title.Text = "Batus Hub" -- Başlık Güncellendi
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 24
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.BackgroundTransparency = 1
+title.Size = UDim2.new(1, 0, 0, 50)
+title.Position = UDim2.new(0, 0, 0, 0)
+
+-- SubTitle Özellikleri
+subTitle.Text = "Made By xBatuhan2"
+subTitle.Font = Enum.Font.SourceSans
+subTitle.TextSize = 18
+subTitle.TextColor3 = Color3.fromRGB(200, 200, 200)
+subTitle.BackgroundTransparency = 1
+subTitle.Size = UDim2.new(1, 0, 0, 30)
+subTitle.Position = UDim2.new(0, 0, 0, 50)
+
+-- Inf Flow Butonu Özellikleri
+inflowButton.Text = "Inf Flow"
+inflowButton.Font = Enum.Font.SourceSansBold
+inflowButton.TextSize = 20
+inflowButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+inflowButton.BackgroundColor3 = Color3.fromRGB(70, 130, 180)
+inflowButton.Size = UDim2.new(0, 200, 0, 50)
+inflowButton.Position = UDim2.new(0.5, -100, 0, 90)
+
+uiCornerButton1.CornerRadius = UDim.new(0, 10)
+
+-- Flow Input Özellikleri
+flowInput.PlaceholderText = "Enter Flow Value"
+flowInput.Font = Enum.Font.SourceSans
+flowInput.TextSize = 18
+flowInput.TextColor3 = Color3.fromRGB(0, 0, 0)
+flowInput.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+flowInput.Size = UDim2.new(0, 200, 0, 40)
+flowInput.Position = UDim2.new(0.5, -100, 0, 160)
+
+uiCornerInput.CornerRadius = UDim.new(0, 10)
+
+-- Start Butonu Özellikleri
+startButton.Text = "Start"
+startButton.Font = Enum.Font.SourceSansBold
+startButton.TextSize = 20
+startButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+startButton.BackgroundColor3 = Color3.fromRGB(34, 139, 34)
+startButton.Size = UDim2.new(0, 100, 0, 40)
+startButton.Position = UDim2.new(0.5, -50, 0, 210)
+
+uiCornerButton2.CornerRadius = UDim.new(0, 10)
+
+-- Close Butonu Özellikleri
 closeButton.Text = "Close"
-closeButton.TextColor3 = Color3.new(1, 1, 1)
-closeButton.BackgroundColor3 = Color3.new(0.5, 0.1, 0.1)
 closeButton.Font = Enum.Font.SourceSansBold
-closeButton.TextScaled = true
-closeButton.Parent = frame
+closeButton.TextSize = 20
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.BackgroundColor3 = Color3.fromRGB(255, 69, 69)
+closeButton.Size = UDim2.new(0, 100, 0, 40)
+closeButton.Position = UDim2.new(0.5, -50, 0, 260)
 
--- Start butonuna tıklama fonksiyonu
-startButton.MouseButton1Click:Connect(function()
-    local selectedPlayer = localPlayer -- Otomatik olarak LocalPlayer seçilir
+uiCornerButton3.CornerRadius = UDim.new(0, 10)
 
-    if selectedPlayer then
-        local playerStats = selectedPlayer:FindFirstChild("PlayerStats")
-
+-- İşlevler
+inflowButton.MouseButton1Click:Connect(function()
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        local playerStats = player:FindFirstChild("PlayerStats")
         if playerStats then
-            local flowValue = playerStats:FindFirstChild("Flow")
-            
-            if flowValue and flowValue:IsA("StringValue") then
-                -- Girilen değeri Flow olarak ayarla
-                flowValue.Value = flowInput.Text
-                print(selectedPlayer.Name .. "'s Flow value set to '" .. flowInput.Text .. "'.")
-            else
-                warn("Flow value not found or incorrect type.")
+            local inFlow = playerStats:FindFirstChild("InFlow")
+            if inFlow and inFlow:IsA("BoolValue") then
+                inFlow.Value = true
             end
-        else
-            warn("PlayerStats section not found.")
+        end
+    end
+    print("InFlow Değeri Aktifleştirildi!")
+end)
+
+startButton.MouseButton1Click:Connect(function()
+    local inputValue = flowInput.Text -- Kullanıcıdan alınan metni al
+    
+    if inputValue and inputValue ~= "" then -- Giriş boş değilse
+        for _, player in ipairs(game.Players:GetPlayers()) do
+            local playerStats = player:FindFirstChild("PlayerStats") -- PlayerStats'ı kontrol et
+            if playerStats then
+                local flow = playerStats:FindFirstChild("Flow") -- Flow değerini kontrol et
+                if flow and flow:IsA("StringValue") then -- Flow bir StringValue olmalı
+                    flow.Value = inputValue -- Değeri ayarla
+                    print(player.Name .. " için Flow değeri ayarlandı: " .. inputValue)
+                else
+                    warn(player.Name .. " için 'Flow' StringValue bulunamadı!")
+                end
+            else
+                warn(player.Name .. " için 'PlayerStats' bulunamadı!")
+            end
         end
     else
-        warn("Player not found.")
+        print("Lütfen geçerli bir değer girin!")
     end
 end)
 
--- Close butonuna tıklama fonksiyonu
 closeButton.MouseButton1Click:Connect(function()
-    gui:Destroy() -- GUI'yi kapat
+    screenGui:Destroy()
 end)
