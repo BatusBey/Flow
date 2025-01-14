@@ -1,2 +1,128 @@
 -- No skidders
-([[This file was protected with MoonSec V3]]):gsub('.+', (function(a) _azIRBcFUqWRB = a; end)); return(function(f,...)local p;local h;local s;local l;local t;local d;local e=24915;local n=0;local r={};while n<948 do n=n+1;while n<0x171 and e%0x4b96<0x25cb do n=n+1 e=(e+833)%14639 local o=n+e if(e%0x3afc)>0x1d7e then e=(e*0x208)%0x827 while n<0x16e and e%0x2302<0x1181 do n=n+1 e=(e-357)%38981 local t=n+e if(e%0xbbc)<=0x5de then e=(e*0x96)%0xacc7 local e=35974 if not r[e]then r[e]=0x1 l=string;end elseif e%2~=0 then e=(e+0xa9)%0x3cef local e=8590 if not r[e]then r[e]=0x1 d=function(r)local e=0x01 local function n(n)e=e+n return r:sub(e-n,e-0x01)end while true do local r=n(0x01)if(r=="\5")then break end local e=l.byte(n(0x01))local e=n(e)if r=="\2"then e=p.UHnWvWfV(e)elseif r=="\3"then e=e~="\0"elseif r=="\6"then h[e]=function(e,n)return f(8,nil,f,n,e)end elseif r=="\4"then e=h[e]elseif r=="\0"then e=h[e][n(l.byte(n(0x01)))];end local n=n(0x08)p[n]=e end end end else e=(e-0x32a)%0xb5af n=n+1 local e=94818 if not r[e]then r[e]=0x1 p={};end end end elseif e%2~=0 then e=(e+0x285)%0x3864 while n<0x34c and e%0x1e42<0xf21 do n=n+1 e=(e*426)%39078 local h=n+e if(e%0x2c7c)<0x163e then e=(e*0x174)%0x6cea local e=64288 if not r[e]then r[e]=0x1 s=tonumber;end elseif e%2~=0 then e=(e*0x3d)%0x3bc2 local e=73051 if not r[e]then r[e]=0x1 end else e=(e-0x12)%0x30a5 n=n+1 local e=94934 if not r[e]then r[e]=0x1 t="\4\8\116\111\110\117\109\98\101\114\85\72\110\87\118\87\102\86\0\6\115\116\114\105\110\103\4\99\104\97\114\90\73\106\89\105\114\72\107\0\6\115\116\114\105\110\103\3\115\117\98\86\97\88\117\104\67\71\116\0\6\115\116\114\105\110\103\4\98\121\116\101\99\114\98\76\81\110\122\113\0\5\116\97\98\108\101\6\99\111\110\99\97\116\98\108\66\69\76\67\98\83\0\5\116\97\98\108\101\6\105\110\115\101\114\116\106\115\70\108\76\98\80\121\5";end end end else e=(e+0x2dd)%0x2947 n=n+1 while n<0x241 and e%0xa40<0x520 do n=n+1 e=(e*568)%29165 local d=n+e if(e%0x45d2)<=0x22e9 then e=(e*0x1b1)%0xbfc0 local e=51160 if not r[e]then r[e]=0x1 h=getfenv a
+-- GUI Oluşturma
+local screenGui = Instance.new("ScreenGui")
+local mainFrame = Instance.new("Frame")
+local uiCornerMain = Instance.new("UICorner")
+local title = Instance.new("TextLabel")
+local subTitle = Instance.new("TextLabel")
+local inflowButton = Instance.new("TextButton")
+local uiCornerButton1 = Instance.new("UICorner")
+local flowInput = Instance.new("TextBox")
+local uiCornerInput = Instance.new("UICorner")
+local startButton = Instance.new("TextButton")
+local uiCornerButton2 = Instance.new("UICorner")
+local closeButton = Instance.new("TextButton")
+local uiCornerButton3 = Instance.new("UICorner")
+-- Parent Ayarları
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+mainFrame.Parent = screenGui
+title.Parent = mainFrame
+subTitle.Parent = mainFrame
+inflowButton.Parent = mainFrame
+flowInput.Parent = mainFrame
+startButton.Parent = mainFrame
+closeButton.Parent = mainFrame
+-- Köşe Yuvarlama Eklentileri
+uiCornerMain.Parent = mainFrame
+uiCornerButton1.Parent = inflowButton
+uiCornerInput.Parent = flowInput
+uiCornerButton2.Parent = startButton
+uiCornerButton3.Parent = closeButton
+-- MainFrame Özellikleri
+mainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+mainFrame.Size = UDim2.new(0, 400, 0, 350)
+mainFrame.Position = UDim2.new(0.5, -200, 0.5, -175)
+mainFrame.Draggable = true
+mainFrame.Active = true
+mainFrame.Selectable = true
+uiCornerMain.CornerRadius = UDim.new(0, 15)
+-- Title Özellikleri
+title.Text = "Batus Hub" -- Başlık Güncellendi
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 24
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.BackgroundTransparency = 1
+title.Size = UDim2.new(1, 0, 0, 50)
+title.Position = UDim2.new(0, 0, 0, 0)
+-- SubTitle Özellikleri
+subTitle.Text = "Made By xBatuhan2"
+subTitle.Font = Enum.Font.SourceSans
+subTitle.TextSize = 18
+subTitle.TextColor3 = Color3.fromRGB(200, 200, 200)
+subTitle.BackgroundTransparency = 1
+subTitle.Size = UDim2.new(1, 0, 0, 30)
+subTitle.Position = UDim2.new(0, 0, 0, 50)
+-- Inf Flow Butonu Özellikleri
+inflowButton.Text = "Inf Flow"
+inflowButton.Font = Enum.Font.SourceSansBold
+inflowButton.TextSize = 20
+inflowButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+inflowButton.BackgroundColor3 = Color3.fromRGB(70, 130, 180)
+inflowButton.Size = UDim2.new(0, 200, 0, 50)
+inflowButton.Position = UDim2.new(0.5, -100, 0, 90)
+uiCornerButton1.CornerRadius = UDim.new(0, 10)
+-- Flow Input Özellikleri
+flowInput.PlaceholderText = "Enter Flow Value"
+flowInput.Font = Enum.Font.SourceSans
+flowInput.TextSize = 18
+flowInput.TextColor3 = Color3.fromRGB(0, 0, 0)
+flowInput.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+flowInput.Size = UDim2.new(0, 200, 0, 40)
+flowInput.Position = UDim2.new(0.5, -100, 0, 160)
+uiCornerInput.CornerRadius = UDim.new(0, 10)
+-- Start Butonu Özellikleri
+startButton.Text = "Start"
+startButton.Font = Enum.Font.SourceSansBold
+startButton.TextSize = 20
+startButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+startButton.BackgroundColor3 = Color3.fromRGB(34, 139, 34)
+startButton.Size = UDim2.new(0, 100, 0, 40)
+startButton.Position = UDim2.new(0.5, -50, 0, 210)
+uiCornerButton2.CornerRadius = UDim.new(0, 10)
+-- Close Butonu Özellikleri
+closeButton.Text = "Close"
+closeButton.Font = Enum.Font.SourceSansBold
+closeButton.TextSize = 20
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.BackgroundColor3 = Color3.fromRGB(255, 69, 69)
+closeButton.Size = UDim2.new(0, 100, 0, 40)
+closeButton.Position = UDim2.new(0.5, -50, 0, 260)
+uiCornerButton3.CornerRadius = UDim.new(0, 10)
+-- İşlevler
+inflowButton.MouseButton1Click:Connect(function()
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        local playerStats = player:FindFirstChild("PlayerStats")
+        if playerStats then
+            local inFlow = playerStats:FindFirstChild("InFlow")
+            if inFlow and inFlow:IsA("BoolValue") then
+                inFlow.Value = true
+            end
+        end
+    end
+    print("InFlow Değeri Aktifleştirildi!")
+end)
+startButton.MouseButton1Click:Connect(function()
+    local inputValue = flowInput.Text -- Kullanıcıdan alınan metni al
+    
+    if inputValue and inputValue ~= "" then -- Giriş boş değilse
+        for _, player in ipairs(game.Players:GetPlayers()) do
+            local playerStats = player:FindFirstChild("PlayerStats") -- PlayerStats'ı kontrol et
+            if playerStats then
+                local flow = playerStats:FindFirstChild("Flow") -- Flow değerini kontrol et
+                if flow and flow:IsA("StringValue") then -- Flow bir StringValue olmalı
+                    flow.Value = inputValue -- Değeri ayarla
+                    print(player.Name .. " için Flow değeri ayarlandı: " .. inputValue)
+                else
+                    warn(player.Name .. " için 'Flow' StringValue bulunamadı!")
+                end
+            else
+                warn(player.Name .. " için 'PlayerStats' bulunamadı!")
+            end
+        end
+    else
+        print("Lütfen geçerli bir değer girin!")
+    end
+end)
+closeButton.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
+end)
